@@ -81,9 +81,42 @@ namespace CustomListTest
         }
 
         [TestMethod]
-        public void AddMethod_AddOneString_ListCountIsOne()
+        public void AddMethod_AddTwoStrings_ListCountIsTwo()
         {
+            //Arrange
+            CustomList<string> list = new CustomList<string>();
 
+            int expected = 2;
+            int actual;
+
+            //Act
+            list.Add("Hello");
+            list.Add("World");
+            actual = list.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+
+
+        }
+
+        [TestMethod]
+
+        public void AddMethod_AddTwoStrings_Index1IsWorld()
+        {
+            //Arrange
+            CustomList<string> list = new CustomList<string>();
+
+            string expected = "World";
+            string actual;
+
+            //Act
+            list.Add("Hello");
+            list.Add("World");
+            actual = list[1];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
         }
     }
 }
