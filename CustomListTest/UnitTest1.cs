@@ -122,13 +122,15 @@ namespace CustomListTest
         public void RemoveMethod_RemoveOneInt_ListCountIsOne()
         {
             //Arrange
-            CustomList<int> list = new CustomList<int>() { 5, 2 };
+            int int1 = 5;
+            int int2 = 2
+            CustomList<int> list = new CustomList<int>() { int1, int2 };
 
             int expected = 1;
             int actual;
 
             //Act
-            list.Remove(5);
+            list.Remove(int2);
             actual = list.Count;
 
             //Assert
