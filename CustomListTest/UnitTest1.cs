@@ -228,8 +228,53 @@ namespace CustomListTest
 
             //Assert
             Assert.AreEqual(expected, actual);
+        }
 
+        [TestMethod]
 
+        public void RemoveMethod_RemoveMiddleValue_IndexOneEqualsEight()
+        {
+            CustomList<int> list = new CustomList<int>();
+
+            int value1 = 5;
+            int value2 = 2;
+            int value3 = 8;
+            int expected = 8;
+            int actual;
+
+            list.Add(value1);
+            list.Add(value2);
+            list.Add(value3);
+            list.Remove(value2);
+            actual = list[1];
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+
+        public void RemoveMethod_RemoveFirstOccurence_IndexTwoEqualsFive()
+        {
+            CustomList<int> list = new CustomList<int>();
+
+            int value1 = 3;
+            int value2 = 5;
+            int value3 = 6;
+            int value4 = 5;
+            int value5 = 3;
+            int expected = 5;
+            int actual;
+
+            list.Add(value1);
+            list.Add(value2);
+            list.Add(value3);
+            list.Add(value4);
+            list.Add(value5);
+            list.Remove(5);
+
+            actual = list[2];
+
+            Assert.AreEqual(expected, actual);
         }
         //3, 5, 6, 5, 3
         //when called, the remove method will take out the first occurence
