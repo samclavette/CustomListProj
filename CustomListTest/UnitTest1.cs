@@ -176,6 +176,8 @@ namespace CustomListTest
             int actual;
 
             //Act
+            list.Add(int1);
+            list.Add(int2);
             list.Remove(int2);
             actual = list.Count;
 
@@ -188,13 +190,17 @@ namespace CustomListTest
         public void RemoveMethod_RemoveOneString_Index0EqualsWorld()
         {
             //Arrange
-            CustomList<string> list = new CustomList<string>() { "Hello", "World" };
+            CustomList<string> list = new CustomList<string>();
 
+            string value1 = "Hello";
+            string value2 = "World";
             string expected = "World";
             string actual;
 
             //Act
-            list.Remove("Hello");
+            list.Add(value1);
+            list.Add(value2);
+            list.Remove(value1);
             actual = list[0];
 
             //Assert
@@ -206,14 +212,18 @@ namespace CustomListTest
         public void RemoveMethod_RemoveTwoInts_CountIsZero()
         {
             //Arange
-            CustomList<int> list = new CustomList<int>() { 5, 2 };
+            CustomList<int> list = new CustomList<int>();
 
+            int value1 = 5;
+            int value2 = 2;
             int expected = 0;
             int actual;
 
             //Act
-            list.Remove(5);
-            list.Remove(2);
+            list.Add(value1);
+            list.Add(value2);
+            list.Remove(value1);
+            list.Remove(value2);
             actual = list.Count;
 
             //Assert
