@@ -23,7 +23,15 @@ namespace CustomList
 
         public void Add(T item)
         {
+            items[0] = item;
             count++;
+            capacity = 
+        }
+
+        public void Remove(T item)
+        {
+            count--;
+            capacity = 4 * ((count / 4) + 1);
         }
     }
 }
