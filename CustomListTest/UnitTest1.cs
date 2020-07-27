@@ -5,7 +5,7 @@ using CustomList;
 namespace CustomListTest
 {
     [TestClass]
-    public class AddMethodsTest
+    public class AddMethodTests
     {
         [TestMethod]
         public void AddMethod_AddOneInt_ListCountIsOne()
@@ -114,6 +114,38 @@ namespace CustomListTest
             list.Add("Hello");
             list.Add("World");
             actual = list[1];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        public void RemoveMethod_RemoveOneInt_ListCountIsOne()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>() { 5, 2 };
+
+            int expected = 1;
+            int actual;
+
+            //Act
+            list.Remove(5);
+            actual = list.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        public void RemoveMethod_RemoveOneString_Index0EqualsWorld()
+        {
+            //Arrange
+            CustomList<string> list = new CustomList<string>() { "Hello", "World" };
+
+            string expected = "World";
+            string actual;
+
+            //Act
+            list.Remove("Hello");
+            actual = list[0];
 
             //Assert
             Assert.AreEqual(expected, actual);
