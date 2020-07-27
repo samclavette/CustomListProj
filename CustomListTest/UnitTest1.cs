@@ -45,16 +45,45 @@ namespace CustomListTest
 
         [TestMethod]
 
-        public void AddMethod_AddOneInt_IndexEqualsNull()
+        public void AddMethod_AddOneString_ListCountIsOne()
         {
             //Arrange
-            CustomList<int> list = new CustomList<int>();
+            CustomList<string> list = new CustomList<string>();
 
-            int expected = null;
+            int expected = 1;
+            int actual;
 
             //Act
+            list.Add("Hello");
+            actual = list.Count;
 
             //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+
+        public void AddMethod_AddOneString_Index0EqualsHello()
+        {
+            //Arrange
+            CustomList<string> list = new CustomList<string>();
+
+            string expected = "Hello";
+            string actual;
+
+            //Act
+            list.Add("Hello");
+            actual = list[0];
+
+            //Assert 
+            Assert.AreEqual(expected, actual);
+
+        }
+
+        [TestMethod]
+        public void AddMethod_AddOneString_ListCountIsOne()
+        {
+
         }
     }
 }
