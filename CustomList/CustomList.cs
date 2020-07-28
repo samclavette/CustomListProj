@@ -9,7 +9,9 @@ namespace CustomList
 {
     public class CustomList<T>
     {
-        public int count;
+        private int count;
+        public int Count { get { return count; } }
+
         public int capacity;
 
         private T[] items;
@@ -23,9 +25,12 @@ namespace CustomList
 
         public void Add(T item)
         {
-            items[0] = item;
             count++;
-            capacity = 
+            if (count > capacity)
+            {
+                capacity += 4;
+            }
+            items[count - 1] = item;
         }
 
         public void Remove(T item)
