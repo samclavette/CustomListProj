@@ -360,7 +360,7 @@ namespace CustomListTest
             list.Add(value4);
             list.Remove(value2);
             list.Remove(value4);
-            int expected = "12345";
+            int expected = 2;
             int actual;
 
             string newString = list.ToString();

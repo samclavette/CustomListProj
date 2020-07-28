@@ -107,10 +107,16 @@ namespace CustomList
 
         public override string ToString()
         {
+            string newString = "";
+
             for (int i = 0; i < count; i++)
             {
-                items[i]
+                T value = items[i];
+                newString += value;
             }
+            return newString;
         }
+
+        
     }
 }
