@@ -12,9 +12,24 @@ namespace CustomList
         private int count;
         public int Count { get { return count; } }
 
-        public int capacity;
+        private int capacity;
+
+        public int Capacity { get { return capacity; } }
 
         private T[] items;
+
+        public T this[int i]
+        {
+            get
+            {
+                return items[i];
+            }
+            set
+            {
+                items[i] = value;
+            }
+        }
+
 
         public CustomList()
         {
@@ -35,8 +50,19 @@ namespace CustomList
 
         public void Remove(T item)
         {
+            //need to locate item in array first
+            //then make spot at that index what index+1 is??
+
+            for (int i = 0; i < count; i++)
+            {
+                T newItem = items[i];
+                if (newItem == item)
+                {
+                    int index = i;
+                    
+                }
+            }
             count--;
-            capacity = 4 * ((count / 4) + 1);
         }
     }
 }
