@@ -107,12 +107,13 @@ namespace CustomListTest
             //Arrange
             CustomList<string> list = new CustomList<string>();
             string hello = "Hello";
+            string world = "World";
             string expected = "World";
             string actual;
 
             //Act
-            list.Add("Hello");
-            list.Add("World");
+            list.Add(hello);
+            list.Add(world);
             actual = list[1];
 
             //Assert
@@ -141,7 +142,7 @@ namespace CustomListTest
 
         [TestMethod]
 
-        public void AddMethod_AddThreeInts_CapacityIsEight()
+        public void AddMethod_AddFiveInts_CapacityIsEight()
         {
             CustomList<int> list = new CustomList<int>();
 

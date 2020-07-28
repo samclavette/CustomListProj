@@ -10,7 +10,19 @@ namespace CustomList
     {
         static void Main(string[] args)
         {
-            List<int> list = new List<int>();
+            CustomList<string> testList = new CustomList<string>();
+
+            testList.Add("Sam");
+            testList.Add("C");
+            Console.WriteLine(testList[3]);
+            testList.Add("Mike");
+            testList.Add("H");
+
+            testList.Remove("Sam");
+
+            Console.WriteLine(testList[0]);
+
+            throw new ArgumentOutOfRangeException();
         }
     }
 }
