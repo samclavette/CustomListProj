@@ -102,9 +102,15 @@ namespace CustomList
                 }
             }
             items = newArray;
-
-            // only decrement count if you actually removed something
             count--;
+        }
+
+        public override string ToString()
+        {
+            for (int i = 0; i < count; i++)
+            {
+                items[i]
+            }
         }
     }
 }

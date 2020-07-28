@@ -277,9 +277,48 @@ namespace CustomListTest
 
             Assert.AreEqual(expected, actual);
         }
-        //3, 5, 6, 5, 3
-        //when called, the remove method will take out the first occurence
-        //3, 6, 5, 3 would be the result
+        
+        [TestMethod]
+
+        public void ToStringMethod_ValueOneValueTwoValueThree_EqualsOneTwoThree()
+        {
+            CustomList<int> list = new CustomList<int>();
+
+            int value1 = 1;
+            int value2 = 2;
+            int value3 = 3;
+            list.Add(value1);
+            list.Add(value2);
+            list.Add(value3);
+            string expected = "123";
+            string actual;
+
+            actual = list.ToString();
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        public void ToStringMethod_ValuesOneThroughFive_EqualsOneTwoThreeFourFive()
+        {
+            CustomList<int> list = new CustomList<int>();
+
+            int value1 = 1;
+            int value2 = 2;
+            int value3 = 3;
+            int value4 = 4;
+            int value5 = 5;
+            list.Add(value1);
+            list.Add(value2);
+            list.Add(value3);
+            list.Add(value4);
+            list.Add(value5);
+            string expected = "12345";
+            string actual;
+
+            actual = list.ToString();
+
+            Assert.AreEqual(expected, actual);
+        }
 
     }
 }
