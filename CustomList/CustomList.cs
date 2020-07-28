@@ -24,7 +24,7 @@ namespace CustomList
         {
             get
             {
-                if (i > 0 && i < count)
+                if (i >= 0 && i < count)
                 {
                     return items[i];
                 }
@@ -35,7 +35,7 @@ namespace CustomList
             }
             set
             {
-                if (i > 0 && i < count)
+                if (i >= 0 && i < count)
                 {
                     items[i] = value;
                 }
@@ -56,40 +56,52 @@ namespace CustomList
 
         public void Add(T item)
         {
-            count++;
-            if (count > capacity)
+            if (count == capacity)
             {
                 capacity += 4;
                 // make a new, bigger array
-                T[] biggerArray = new T[capacity];
+                T[] newArray = new T[capacity];
                 // fill up new array with values from the original (loop?)
-
+                for (int i = 0; i < count; i++)
+                {
+                    newArray[i] = items[i];
+                }
                 // have 'items' member variable point to this new array
-                items = biggerArray;
+                items = newArray;
             }
-            items[count - 1] = item;
+            items[count] = item;
+            count++;
         }
 
         public void Remove(T item)
         {
             bool itemHasBeenRemoved = false;
             // make a new array
-
+            T[] newArray = new T[capacity];
             // use a loop to "fill up" the new array...
                 // if the item we're on is NOT the item to remove, and we haven't removed anything yet...
                 // otherwise if the item we're on is NOT the item to remove, but we HAVE removed the "item to remove"...
                 // otherwise if the item we're on IS the item to remove...
             for (int i = 0; i < count; i++)
             {
-                if (items[i].Equals(item))
+                if (items[i].Equals(item) && itemHasBeenRemoved == false)
                 {
-
-                    T newItem = items[i];
-
+                    itemHasBeenRemoved = true;
+                }
+                else if (items[1].Equals(item) && itemHasBeenRemoved == true)
+                {
+                    newArray[i - 1] = items[i];
+                }
+                else if (items[i].Equals(item) == false && itemHasBeenRemoved == false)
+                {
+                    newArray[i] = items[i]; 
+                }
+                else if (items[i].Equals(item) == false && itemHasBeenRemoved == true)
+                {
+                    newArray[i - 1] = items[i];
                 }
             }
-
-            // items = // your new array from above
+            items = newArray;
 
             // only decrement count if you actually removed something
             count--;
