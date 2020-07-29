@@ -117,6 +117,18 @@ namespace CustomList
             return newString;
         }
 
-        
+        public static CustomList<T> operator+ (CustomList<T> listOne , CustomList<T> listTwo)
+        {
+            CustomList<T> list = new CustomList<T>();
+            list = listOne + listTwo;
+            return list;
+        }
+
+        public static CustomList<T> operator- (CustomList<T> listOne, CustomList<T> listTwo)
+        {
+            CustomList<T> list = new CustomList<T>();
+            list = listOne - listTwo;
+            return list;
+        }
     }
 }
