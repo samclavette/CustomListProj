@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CustomList
 {
-    public class CustomList<T>
+    public class CustomList<T> : IEnumerable
     {
         private int count;
         public int Count { get { return count; } }
@@ -117,17 +117,39 @@ namespace CustomList
             return newString;
         }
 
-        public static CustomList<T> operator+ (CustomList<T> listOne , CustomList<T> listTwo)
+        // take first list, cycle through it and add every value to a new list
+        // take second list, do the same but add after
+        public static CustomList<T> operator+ (CustomList<T> listOne, CustomList<T> listTwo)
         {
             CustomList<T> list = new CustomList<T>();
-            list = listOne + listTwo;
+
+            for (int i = 0; i < listOne.Count; i++)
+            {
+                T value = listOne[i];
+                list.Add(value);
+            }
+            for (int i = 0; i < listTwo.Count; i++)
+            {
+                T value = listTwo[i];
+                list.Add(value);
+            }
             return list;
         }
 
         public static CustomList<T> operator- (CustomList<T> listOne, CustomList<T> listTwo)
         {
             CustomList<T> list = new CustomList<T>();
-            list = listOne - listTwo;
+
+            for (int i = 0; i < listOne.Count; i++)
+            {
+                T value = listOne[i];
+                list.Add(value);
+            }
+            for (int i = 0; i < listTwo.Count; i++)
+            {
+                T value = listTwo[i];
+                list.Add(value);
+            }
             return list;
         }
     }

@@ -392,5 +392,12 @@ namespace CustomListTest
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+
+        public void PlusOperatorMethod_AddTwoLists_ListEqualsFirstThenSecond()
+        {
+            CustomList<T> listOne = new CustomList<T>();
+        }
+
     }
 }
