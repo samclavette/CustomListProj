@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CustomList;
 using System.Security.Cryptography.X509Certificates;
+using System.Collections.Generic;
 
 namespace CustomListTest
 {
@@ -393,21 +394,33 @@ namespace CustomListTest
             Assert.AreEqual(expected, actual);
         }
 
-        //[TestMethod]
+        [TestMethod]
 
-        //public void PlusOperatorMethod_AddTwoIntLists_ListEqualsFirstThenSecond()
-        //{
-        //    CustomList<int> listOne = new CustomList<int>() { 1, 2, 3 };
-        //    CustomList<int> listTwo = new CustomList<int>() { 4, 5, 6 };
+        public void PlusOperatorMethod_AddTwoIntLists_ListEqualsFirstThenSecond()
+        {
+            CustomList<int> listOne = new CustomList<int>() { 1, 2, 3 };
+            CustomList<int> listTwo = new CustomList<int>() { 4, 5, 6 };
 
-        //    CustomList<int> expected = { 1, 2, 3, 4, 5, 6 };
-        //    CustomList<int> actual;
+            CustomList<int> expected = new CustomList<int>() { 1, 2, 3, 4, 5, 6 };
+            CustomList<int> actual;
 
-        //    actual = listOne + listTwo;
+            actual = listOne + listTwo;
 
-        //    Assert.AreEqual(expected, actual);
-        //}
+            Assert.AreEqual(expected.ToString(), actual.ToString());
+        }
+        [TestMethod]
+        public void PlusOperatorMethod_AddTwoIntLists_ListEqualsFirstThenSecondWRegularLists()
+        {
+            List<int> expected = new List<int>() { 1, 2, 3 };
+            List<int> actual = new List<int>() { 1, 2, 3 };
 
+            //List<int> expected = new List<int>() { 1, 2, 3, 4, 5, 6 };
+            //List<int> actual;
+
+            //actual = listOne + listTwo;
+
+            Assert.AreEqual(expected.ToString(), actual.ToString());
+        }
         [TestMethod]
 
         public void PlusOperatorMethod_AddTwoIntLists_CountEqualsSix()
@@ -456,20 +469,20 @@ namespace CustomListTest
             Assert.AreEqual(expected, actual);
         }
 
-        //[TestMethod]
+        [TestMethod]
 
-        //public void MinusOperatorMethod_SubtractTwoIntLists_ListEqualsFirstThenSecond()
-        //{
-        //    CustomList<int> listOne = new CustomList<int>() { 1, 2, 3 };
-        //    CustomList<int> listTwo = new CustomList<int>() { 4, 3, 6 };
+        public void MinusOperatorMethod_SubtractTwoIntLists_ListEqualsFirstThenSecond()
+        {
+            CustomList<int> listOne = new CustomList<int>() { 1, 2, 3 };
+            CustomList<int> listTwo = new CustomList<int>() { 4, 3, 6 };
 
-        //    CustomList<int> expected = { 1, 2};
-        //    CustomList<int> actual;
+            CustomList<int> expected = new CustomList<int>() { 1, 2 };
+            CustomList<int> actual;
 
-        //    actual = listOne - listTwo;
+            actual = listOne - listTwo;
 
-        //    Assert.AreEqual(expected, actual);
-        //}
+            Assert.AreEqual(expected.ToString(), actual.ToString());
+        }
 
         [TestMethod]
 
@@ -477,11 +490,12 @@ namespace CustomListTest
         {
             CustomList<int> listOne = new CustomList<int>() { 1, 2, 3 };
             CustomList<int> listTwo = new CustomList<int>() { 4, 3, 6 };
+            CustomList<int> listThree = new CustomList<int>();
 
             int expected = 2;
             int actual;
 
-            CustomList<int> listThree = listOne - listTwo;
+            listThree = listOne - listTwo;
             actual = listThree.Count;
 
             Assert.AreEqual(expected, actual);
@@ -493,12 +507,14 @@ namespace CustomListTest
         {
             CustomList<int> listOne = new CustomList<int>() { 1, 2, 3 };
             CustomList<int> listTwo = new CustomList<int>() { 4, 3, 6 };
+            CustomList<int> listThree = new CustomList<int>();
+
 
             int expected = 2;
             int actual;
 
-            CustomList<int> listThree = listOne - listTwo;
-            actual = listThree[3];
+            listThree = listOne - listTwo;
+            actual = listThree[1];
 
             Assert.AreEqual(expected, actual);
         }
@@ -509,11 +525,12 @@ namespace CustomListTest
         {
             CustomList<string> listOne = new CustomList<string>() { "my", "name", "is" };
             CustomList<string> listTwo = new CustomList<string>() { "Sam", "name", "is" };
+            CustomList<string> listThree = new CustomList<string>();
 
             int expected = 1;
             int actual;
 
-            CustomList<string> listThree = listOne - listTwo;
+            listThree = listOne - listTwo;
             actual = listThree.Count;
 
             Assert.AreEqual(expected, actual);

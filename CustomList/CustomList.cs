@@ -89,21 +89,24 @@ namespace CustomList
                 {
                     itemHasBeenRemoved = true;
                 }
-                else if (items[1].Equals(item) && itemHasBeenRemoved == true)
-                {
-                    newArray[i - 1] = items[i];
-                }
+                //else if (items[1].Equals(item) && itemHasBeenRemoved == true)
+                //{
+                //    newArray[i - 1] = items[i];
+                //}
                 else if (items[i].Equals(item) == false && itemHasBeenRemoved == false)
                 {
                     newArray[i] = items[i]; 
                 }
-                else if (items[i].Equals(item) == false && itemHasBeenRemoved == true)
+                else if (itemHasBeenRemoved == true)
                 {
                     newArray[i - 1] = items[i];
                 }
             }
-            items = newArray;
-            count--;
+            if (itemHasBeenRemoved == true)
+            {
+                count--;
+            }
+            items = newArray;       
         }
 
         public override string ToString()
