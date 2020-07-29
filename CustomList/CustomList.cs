@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -115,6 +116,14 @@ namespace CustomList
                 newString += value;
             }
             return newString;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            for (int i = 0; i < Count; i++)
+            {
+               yield return items[i];
+            }
         }
 
         // take first list, cycle through it and add every value to a new list

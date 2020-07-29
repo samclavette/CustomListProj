@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CustomList;
+using System.Security.Cryptography.X509Certificates;
 
 namespace CustomListTest
 {
@@ -396,8 +397,48 @@ namespace CustomListTest
 
         public void PlusOperatorMethod_AddTwoLists_ListEqualsFirstThenSecond()
         {
-            CustomList<T> listOne = new CustomList<T>();
+            CustomList<int> listOne = new CustomList<int>() { 1, 2, 3 };
+            CustomList<int> listTwo = new CustomList<int>() { 4, 5, 6 };
+
+            CustomList<int> expected = { 1, 2, 3, 4, 5, 6 };
+            CustomList<int> actual;
+
+            actual = listOne + listTwo;
+
+            Assert.AreEqual(expected, actual);
         }
 
-    }
+        [TestMethod]
+
+        public void PlusOperatorMethod_AddTwoLists_CountEqualsSix()
+        {
+            CustomList<int> listOne = new CustomList<int>() { 1, 2, 3 };
+            CustomList<int> listTwo = new CustomList<int>() { 4, 5, 6 };
+
+            int expected = 6;
+            int actual;
+
+            CustomList<int> listThree = listOne + listTwo;
+            actual = listThree.Count;
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+
+        public void PlusOperatorMethod_AddTwoLists_ListAtIndexThreeEqualsFour()
+        {
+            CustomList<int> listOne = new CustomList<int>() { 1, 2, 3 };
+            CustomList<int> listTwo = new CustomList<int>() { 4, 5, 6 };
+
+            int expected = 4;
+            int actual;
+
+            CustomList<int> listThree = listOne + listTwo;
+            actual = listThree[3];
+
+            Assert.AreEqual(expected, actual);
+        }
+
+    }                                                 
 }
