@@ -157,7 +157,7 @@ namespace CustomList
             for (int i = 0; i < listTwo.Count; i++)
             {
                 T value = listTwo[i];
-                list.Add(value);
+                list.Remove(value);
             }
             return list;
         }
