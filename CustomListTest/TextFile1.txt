@@ -15,6 +15,197 @@ Returns:
 new CustomList<T>
 
 Example:
+public class CustomList<T> : IEnumerable
+    {
+        private int count;
+        public int Count { get { return count; } }
+
+        private int capacity;
+
+        public int Capacity { get { return capacity; } }
+
+        private T[] items;
+
+        // throw an exception if the index is out of range
+        public T this[int i]
+        {
+            get
+            {
+                if (i >= 0 && i < count)
+                {
+                    return items[i];
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+            }
+            set
+            {
+                if (i >= 0 && i < count)
+                {
+                    items[i] = value;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
+
+
+        public CustomList()
+        {
+            count = 0;
+            capacity = 4;
+            items = new T[capacity];
+        }
+
+        // This method adds an item to a list.
+
+        public void Add(T item)
+        {
+            if (count == capacity)
+            {
+                capacity += 4;
+                
+                T[] newArray = new T[capacity];
+                
+                for (int i = 0; i < count; i++)
+                {
+                    newArray[i] = items[i];
+                }                
+                items = newArray;
+            }
+            items[count] = item;
+            count++;
+        }
+
+        //This method removes an item from a list.
+
+        public void Remove(T item)
+        {
+            bool itemHasBeenRemoved = false;
+            
+            T[] newArray = new T[capacity];
+
+            for (int i = 0; i < count; i++)
+            {
+                if (items[i].Equals(item) && itemHasBeenRemoved == false)
+                {
+                    itemHasBeenRemoved = true;
+                }
+                else if (items[i].Equals(item) == false && itemHasBeenRemoved == false)
+                {
+                    newArray[i] = items[i];
+                }
+                else if (itemHasBeenRemoved == true)
+                {
+                    newArray[i - 1] = items[i];
+                }
+            }
+            if (itemHasBeenRemoved == true)
+            {
+                count--;
+            }
+            items = newArray;
+        }
+
+        public override string ToString()
+        {
+            string newString = "";
+
+            for (int i = 0; i < count; i++)
+            {
+                T value = items[i];
+                newString += value;
+            }
+            return newString;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            for (int i = 0; i < Count; i++)
+            {
+                yield return items[i];
+            }
+        }
+
+        public static CustomList<T> operator +(CustomList<T> listOne, CustomList<T> listTwo)
+        {
+            CustomList<T> list = new CustomList<T>();
+            //foreach (T item in listOne)
+            //{
+            //    list.Add(item);
+            //}
+            for (int i = 0; i < listOne.Count; i++)
+            {
+                T value = listOne[i];
+                list.Add(value);
+            }
+            for (int i = 0; i < listTwo.Count; i++)
+            {
+                T value = listTwo[i];
+                list.Add(value);
+            }
+            return list;
+        }
+
+        //This method takes in two lists, and by using the - operator subtracts one from the other to create a new list. 
+
+        public static CustomList<T> operator -(CustomList<T> listOne, CustomList<T> listTwo)
+        {
+            // List created to become new list. 
+            CustomList<T> list = new CustomList<T>();
+
+            // Loop through each iteration of the first list and add eaach value to the new list.
+            for (int i = 0; i < listOne.Count; i++)
+            {
+                T value = listOne[i];
+                list.Add(value);
+            }
+
+            // Loop through the second list and remove the value at each index from the new list.
+            for (int i = 0; i < listTwo.Count; i++)
+            {
+                T value = listTwo[i];
+                list.Remove(value);
+            }
+            // returns the newly created list.
+            return list;
+        }
+
+        public CustomList<T> ZipList(CustomList<T> zippedList)
+        {
+            CustomList<T> newList = new CustomList<T>();
+            int iterationNumber = 0;
+            if (count >= zippedList.Count)
+            {
+                iterationNumber = count;
+            }
+            else
+            {
+                iterationNumber = zippedList.Count;
+            }
+            for (int i = 0; i < iterationNumber; i++)
+            {
+                if (i < count)
+                {
+                    T value = items[i];
+                    newList.Add(value);
+                }
+                
+                if (i < newList.count)
+                {
+                    T value2 = zippedList[i];
+                    newList.Add(value2);
+                }
+            }
+            return newList;
+        }
+    }
+}
+            
             CustomList<int> listOne = new CustomList<int>() { 1, 2, 3 };
             CustomList<int> listTwo = new CustomList<int>() { 4, 3, 6 };
             CustomList<int> listThree = new CustomList<int>();

@@ -609,7 +609,7 @@ namespace CustomListTest
 
         [TestMethod]
 
-        public void ZipListsMethod_ZipTwoLists_IndexTwoEquals()
+        public void ZipListsMethod_ZipTwoLists_IndexTwoEqualsTwo()
         {
             CustomList<int> listOne = new CustomList<int>() { 1, 2, 3 };
             CustomList<int> listTwo = new CustomList<int>() { 4, 5, 6 };
@@ -620,6 +620,40 @@ namespace CustomListTest
 
             listThree = listOne.ZipList(listTwo);
             actual = listThree[2];
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+
+        public void ZipListsMethod_ZipTwoLists_CountEqualsFive()
+        {
+            CustomList<int> listOne = new CustomList<int>() { 1, 2};
+            CustomList<int> listTwo = new CustomList<int>() { 4, 5, 6 };
+            CustomList<int> listThree = new CustomList<int>();
+
+            int expected = 5;
+            int actual;
+
+            listThree = listOne.ZipList(listTwo);
+            actual = listThree.Count;
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+
+        public void ZipListsMethod_ZipTwoLists_IndexFourEqualsSix()
+        {
+            CustomList<int> listOne = new CustomList<int>() { 1, 2};
+            CustomList<int> listTwo = new CustomList<int>() { 4, 5, 6 };
+            CustomList<int> listThree = new CustomList<int>();
+
+            int expected = 6;
+            int actual;
+
+            listThree = listOne.ZipList(listTwo);
+            actual = listThree[4];
 
             Assert.AreEqual(expected, actual);
         }
