@@ -598,8 +598,13 @@ namespace CustomListTest
             CustomList<int> listTwo = new CustomList<int>() { 4, 5, 6 };
             CustomList<int> listThree = new CustomList<int>();
 
-            listThree = listOne.ZipList(listTwo);
+            int expected = 6;
+            int actual;
 
+            listThree = listOne.ZipList(listTwo);
+            actual = listThree.Count;
+
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
@@ -608,6 +613,15 @@ namespace CustomListTest
         {
             CustomList<int> listOne = new CustomList<int>() { 1, 2, 3 };
             CustomList<int> listTwo = new CustomList<int>() { 4, 5, 6 };
+            CustomList<int> listThree = new CustomList<int>();
+
+            int expected = 2;
+            int actual;
+
+            listThree = listOne.ZipList(listTwo);
+            actual = listThree[2];
+
+            Assert.AreEqual(expected, actual);
         }
 
     }                                                 

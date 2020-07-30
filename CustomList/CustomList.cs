@@ -134,7 +134,10 @@ namespace CustomList
         public static CustomList<T> operator +(CustomList<T> listOne, CustomList<T> listTwo)
         {
             CustomList<T> list = new CustomList<T>();
-
+            //foreach (T item in listOne)
+            //{
+            //    list.Add(item);
+            //}
             for (int i = 0; i < listOne.Count; i++)
             {
                 T value = listOne[i];
@@ -165,17 +168,31 @@ namespace CustomList
             return list;
         }
 
-        public static CustomList<T> ZipList(CustomList<T> zippedList)
+        public CustomList<T> ZipList(CustomList<T> zippedList)
         {
-            CustomList<T> list = new CustomList<T>();
             CustomList<T> newList = new CustomList<T>();
-
-            for (int i = 0; i < listOne.Count; i++)
+            int iterationNumber = 0;
+            if (count >= newList.Count)
             {
-                T value = list[i];
-                newList.Add(value);
-                T value2 = zippedList[i];
-                newList.Add(value2);
+                iterationNumber = count;
+            }
+            else
+            {
+                iterationNumber = newList.Count;
+            }
+            for (int i = 0; i < iterationNumber; i++)
+            {
+                if (i < count)
+                {
+                    T value = items[i];
+                    newList.Add(value);
+                }
+                
+                if (i < newList.count)
+                {
+                    T value2 = zippedList[i];
+                    newList.Add(value2);
+                }
             }
             return newList;
         }
