@@ -1,0 +1,27 @@
+﻿CustomList<T> overload the - operator method
+
+-Subtracts every item of one list from another
+
+Syntax:
+public static CustomList<T> operator- (CustomList<T> listOne, CustomList<T> listTwo)
+
+Parameters:
+CustomList<T> listOne
+CustomList<T> listTwo
+
+The two CustomList<T> lists.
+
+Returns:
+new CustomList<T>
+
+Example:
+            CustomList<int> listOne = new CustomList<int>() { 1, 2, 3 };
+            CustomList<int> listTwo = new CustomList<int>() { 4, 3, 6 };
+            CustomList<int> listThree = new CustomList<int>();
+
+            listThree = listOne - listTwo;
+
+            Console.WriteLine(listThree);
+
+            // Will output 1, 2
+            

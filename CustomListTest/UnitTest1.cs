@@ -573,5 +573,22 @@ namespace CustomListTest
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+
+        public void MinusOperatorMethod_SubtractTwoStringLists_ListCountEqualsZero()
+        {
+            CustomList<string> listOne = new CustomList<string>();
+            CustomList<string> listTwo = new CustomList<string>() { "my", "name", "is" };
+            CustomList<string> listThree = new CustomList<string>();
+
+            int expected = 0;
+            int actual;
+
+            listThree = listOne - listTwo;
+            actual = listThree.Count;
+
+            Assert.AreEqual(expected, actual);
+        }
+
     }                                                 
 }
