@@ -29,7 +29,7 @@ namespace CustomList
                 {
                     return items[i];
                 }
-                else 
+                else
                 {
                     throw new ArgumentOutOfRangeException();
                 }
@@ -80,9 +80,9 @@ namespace CustomList
             // make a new array
             T[] newArray = new T[capacity];
             // use a loop to "fill up" the new array...
-                // if the item we're on is NOT the item to remove, and we haven't removed anything yet...
-                // otherwise if the item we're on is NOT the item to remove, but we HAVE removed the "item to remove"...
-                // otherwise if the item we're on IS the item to remove...
+            // if the item we're on is NOT the item to remove, and we haven't removed anything yet...
+            // otherwise if the item we're on is NOT the item to remove, but we HAVE removed the "item to remove"...
+            // otherwise if the item we're on IS the item to remove...
             for (int i = 0; i < count; i++)
             {
                 if (items[i].Equals(item) && itemHasBeenRemoved == false)
@@ -95,7 +95,7 @@ namespace CustomList
                 //}
                 else if (items[i].Equals(item) == false && itemHasBeenRemoved == false)
                 {
-                    newArray[i] = items[i]; 
+                    newArray[i] = items[i];
                 }
                 else if (itemHasBeenRemoved == true)
                 {
@@ -106,7 +106,7 @@ namespace CustomList
             {
                 count--;
             }
-            items = newArray;       
+            items = newArray;
         }
 
         public override string ToString()
@@ -125,13 +125,13 @@ namespace CustomList
         {
             for (int i = 0; i < Count; i++)
             {
-               yield return items[i];
+                yield return items[i];
             }
         }
 
         // take first list, cycle through it and add every value to a new list
         // take second list, do the same but add after
-        public static CustomList<T> operator+ (CustomList<T> listOne, CustomList<T> listTwo)
+        public static CustomList<T> operator +(CustomList<T> listOne, CustomList<T> listTwo)
         {
             CustomList<T> list = new CustomList<T>();
 
@@ -148,7 +148,7 @@ namespace CustomList
             return list;
         }
 
-        public static CustomList<T> operator- (CustomList<T> listOne, CustomList<T> listTwo)
+        public static CustomList<T> operator -(CustomList<T> listOne, CustomList<T> listTwo)
         {
             CustomList<T> list = new CustomList<T>();
 
@@ -163,6 +163,21 @@ namespace CustomList
                 list.Remove(value);
             }
             return list;
+        }
+
+        public static CustomList<T> ZipList(CustomList<T> zippedList)
+        {
+            CustomList<T> list = new CustomList<T>();
+            CustomList<T> newList = new CustomList<T>();
+
+            for (int i = 0; i < listOne.Count; i++)
+            {
+                T value = list[i];
+                newList.Add(value);
+                T value2 = zippedList[i];
+                newList.Add(value2);
+            }
+            return newList;
         }
     }
 }

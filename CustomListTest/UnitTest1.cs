@@ -590,5 +590,25 @@ namespace CustomListTest
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+
+        public void ZipListsMethod_ZipTwoLists_ListCountIsSix()
+        {
+            CustomList<int> listOne = new CustomList<int>() { 1, 2, 3 };
+            CustomList<int> listTwo = new CustomList<int>() { 4, 5, 6 };
+            CustomList<int> listThree = new CustomList<int>();
+
+            listThree = listOne.ZipList(listTwo);
+
+        }
+
+        [TestMethod]
+
+        public void ZipListsMethod_ZipTwoLists_IndexTwoEquals()
+        {
+            CustomList<int> listOne = new CustomList<int>() { 1, 2, 3 };
+            CustomList<int> listTwo = new CustomList<int>() { 4, 5, 6 };
+        }
+
     }                                                 
 }
